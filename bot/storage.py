@@ -242,10 +242,10 @@ async def get_attendance_for_session(
         return dict(row) if row else None
 
 
-# Alias used in today/mark/edit handlers
 async def get_or_create_attendance(
     user_id: int, session_id: int, date_str: str
 ) -> Optional[Dict[str, Any]]:
+    """Return the attendance record if it exists, otherwise return None (no side effects)."""
     return await get_attendance_for_session(user_id, session_id, date_str)
 
 

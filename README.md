@@ -110,3 +110,132 @@ PyYAML==6.0.1       # Citire configurare
 pytz==2024.1        # Timezone Europe/Bucharest
 aiosqlite==0.20.0   # SQLite async
 ```
+
+---
+
+## Deploy pe Ubuntu (Oracle Cloud / orice VM)
+
+### 1. Pregătire sistem
+
+```bash
+sudo apt update && sudo apt install -y python3.11 python3.11-venv python3-pip git
+```
+
+### 2. Clonare/copiere proiect
+
+```bash
+cd /opt
+sudo git clone https://github.com/DenMobile206/orar.git
+sudo chown -R $USER:$USER /opt/orar
+cd /opt/orar
+```
+
+### 3. Creare mediu virtual și instalare dependențe
+
+```bash
+python3.11 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 4. Configurare token și whitelist
+
+```bash
+nano bot/config.yaml
+```
+
+Modifică:
+
+```yaml
+telegram:
+  token: "TOKEN_BOT_TĂU"   # de la @BotFather
+
+whitelist:
+  - 123456789   # ID-ul tău Telegram (de la @userinfobot)
+  - 987654321   # ID-ul colegului
+```
+
+### 5. Testare manuală
+
+```bash
+source venv/bin/activate
+python bot/main.py
+```
+
+Trimite `/start` în bot ca să verifici că funcționează. `Ctrl+C` pentru oprire.
+
+### 6. Configurare serviciu systemd (pornire automată)
+
+Creează fișierul serviciu:
+
+```bash
+sudo nano /etc/systemd/system/orar-bot.service
+```
+
+Conținut:
+
+```ini
+[Unit]
+Description=Orar Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/orar
+ExecStart=/opt/orar/venv/bin/python bot/main.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+> Înlocuiește `ubuntu` cu utilizatorul tău real (`whoami`).
+
+### 7. Activare și pornire serviciu
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable orar-bot
+sudo systemctl start orar-bot
+```
+
+### 8. Verificare status și loguri
+
+```bash
+# Status
+sudo systemctl status orar-bot
+
+# Loguri în timp real
+sudo journalctl -u orar-bot -f
+
+# Ultimele 100 linii de log
+sudo journalctl -u orar-bot -n 100 --no-pager
+```
+
+### 9. Restart / Oprire
+
+```bash
+# Restart
+sudo systemctl restart orar-bot
+
+# Oprire
+sudo systemctl stop orar-bot
+
+# Dezactivare pornire automată
+sudo systemctl disable orar-bot
+```
+
+### 10. Actualizare cod
+
+```bash
+cd /opt/orar
+git pull
+source venv/bin/activate
+pip install -r requirements.txt  # dacă s-au schimbat dependențele
+sudo systemctl restart orar-bot
+```

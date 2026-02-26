@@ -1,8 +1,6 @@
 """Statistics handler with filter buttons."""
 from __future__ import annotations
 
-from typing import Any, Dict
-
 from typing import Any, Dict, List
 
 from aiogram import F, Router
