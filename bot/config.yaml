@@ -1,0 +1,249 @@
+telegram:
+  token: "YOUR_BOT_TOKEN_HERE"
+
+whitelist:
+  - 123456789
+  - 987654321
+
+database:
+  path: "attendance.db"
+
+semester:
+  start: "2026-02-23"
+  end: "2026-06-05"
+  vacation:
+    start: "2026-04-10"
+    end: "2026-04-19"
+
+week_type: "auto"
+default_group: "B"
+
+disciplines:
+  - MIS
+  - SN
+  - AuP
+  - TS2
+  - SAIP
+  - PIUG
+  - O
+
+# Schedule: day -> week_type (impar/par) -> group (both/A/B) -> list of sessions
+# "both" group means the session applies to all groups
+schedule:
+  Luni:
+    impar:
+      both:
+        - subject: SAIP
+          session_type: C
+          room: AN101
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "B. Dumitrașcu"
+        - subject: SN
+          session_type: C
+          room: Y405
+          time_start: "14:00"
+          time_end: "15:50"
+          professor: "I. Vasiliev"
+      A:
+        - subject: MIS
+          session_type: L
+          room: Y401
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "G. Simion"
+    par:
+      both:
+        - subject: SAIP
+          session_type: C
+          room: AN101
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "B. Dumitrașcu"
+        - subject: SN
+          session_type: C
+          room: Y405
+          time_start: "14:00"
+          time_end: "15:50"
+          professor: "I. Vasiliev"
+      B:
+        - subject: MIS
+          session_type: L
+          room: Y402
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "G. Simion"
+
+  Marți:
+    impar:
+      both:
+        - subject: AuP
+          session_type: C
+          room: Y405
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "L. Luca"
+        - subject: TS2
+          session_type: C
+          room: Y405
+          time_start: "14:00"
+          time_end: "15:50"
+          professor: "M. Barbu"
+      A:
+        - subject: AuP
+          session_type: L
+          room: Y706
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "D. Ionescu"
+        - subject: TS2
+          session_type: L
+          room: Y406a
+          time_start: "16:00"
+          time_end: "17:50"
+          professor: "A. Filipescu"
+    par:
+      both:
+        - subject: AuP
+          session_type: C
+          room: Y405
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "L. Luca"
+        - subject: TS2
+          session_type: C
+          room: Y405
+          time_start: "14:00"
+          time_end: "15:50"
+          professor: "M. Barbu"
+      B:
+        - subject: AuP
+          session_type: L
+          room: Y706
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "D. Ionescu"
+        - subject: TS2
+          session_type: L
+          room: Y406a
+          time_start: "16:00"
+          time_end: "17:50"
+          professor: "A. Filipescu"
+
+  Miercuri:
+    impar:
+      both:
+        - subject: PIUG
+          session_type: C
+          room: D11
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "M. Vlase"
+      A:
+        - subject: SN
+          session_type: L
+          room: Y502
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "I. Vasiliev"
+        - subject: PIUG
+          session_type: L
+          room: G306
+          time_start: "12:00"
+          time_end: "13:50"
+          professor: "M. Vlase"
+    par:
+      both:
+        - subject: PIUG
+          session_type: C
+          room: D11
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "M. Vlase"
+      B:
+        - subject: SN
+          session_type: L
+          room: Y502
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "I. Vasiliev"
+        - subject: PIUG
+          session_type: L
+          room: G306
+          time_start: "12:00"
+          time_end: "13:50"
+          professor: "M. Vlase"
+
+  Joi:
+    impar:
+      both:
+        - subject: O
+          session_type: C
+          room: Y405
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "G. Ifrim"
+      A:
+        - subject: O
+          session_type: L
+          room: Y402
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "L. Ghinea"
+        - subject: SN
+          session_type: P
+          room: Y502
+          time_start: "12:00"
+          time_end: "13:50"
+          professor: "I. Vasiliev"
+    par:
+      both:
+        - subject: O
+          session_type: C
+          room: Y405
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "G. Ifrim"
+      B:
+        - subject: O
+          session_type: L
+          room: Y402
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "L. Ghinea"
+        - subject: SN
+          session_type: P
+          room: Y502
+          time_start: "12:00"
+          time_end: "13:50"
+          professor: "I. Vasiliev"
+
+  Vineri:
+    impar:
+      A:
+        - subject: SAIP
+          session_type: L
+          room: Y401
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "G. Simion"
+        - subject: PIUG
+          session_type: P
+          room: G306
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "M. Vlase"
+    par:
+      B:
+        - subject: SAIP
+          session_type: L
+          room: Y401
+          time_start: "08:00"
+          time_end: "09:50"
+          professor: "G. Simion"
+        - subject: PIUG
+          session_type: P
+          room: G306
+          time_start: "10:00"
+          time_end: "11:50"
+          professor: "M. Vlase"
